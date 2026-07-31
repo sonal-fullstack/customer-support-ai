@@ -9,7 +9,6 @@ function TicketList({
   setAnalyzedTicket,
   analyzedTicket,
 }) {
-
   // ==========================
   // Update Ticket Status
   // ==========================
@@ -17,9 +16,8 @@ function TicketList({
     try {
       const ticket = tickets[index];
 
-      const response = await axios.post(
-  `https://customer-support-ai-backend-7lrb.onrender.com/api/analyze/${ticket.id}`
-);
+      const response = await axios.put(
+        `https://customer-support-ai-backend-7lrb.onrender.com/api/tickets/${ticket.id}`,
         {
           ...ticket,
           status,
@@ -32,10 +30,7 @@ function TicketList({
 
       setTickets(updatedTickets);
 
-      if (
-        analyzedTicket &&
-        analyzedTicket.id === ticket.id
-      ) {
+      if (analyzedTicket && analyzedTicket.id === ticket.id) {
         setAnalyzedTicket(response.data);
       }
 
@@ -63,10 +58,7 @@ function TicketList({
 
       setTickets(updatedTickets);
 
-      if (
-        analyzedTicket &&
-        analyzedTicket.id === tickets[index].id
-      ) {
+      if (analyzedTicket && analyzedTicket.id === tickets[index].id) {
         setAnalyzedTicket(null);
       }
 
@@ -85,8 +77,7 @@ function TicketList({
       customerType: ticket.customerType,
       productArea: ticket.productArea,
       issueDescription: ticket.issueDescription,
-      previousCommunication:
-        ticket.previousCommunication,
+      previousCommunication: ticket.previousCommunication,
       urgency: ticket.urgency,
     });
 
@@ -104,7 +95,7 @@ function TicketList({
   const analyzeTicket = async (ticket) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/analyze/${ticket.id}`
+        `https://customer-support-ai-backend-7lrb.onrender.com/api/analyze/${ticket.id}`
       );
 
       setAnalyzedTicket({
@@ -126,24 +117,20 @@ function TicketList({
     switch (status) {
       case "Open":
         return "#16a34a";
-
       case "In Review":
         return "#2563eb";
-
       case "Waiting for Customer":
         return "#f59e0b";
-
       case "Resolved":
         return "#10b981";
-
       case "Closed":
         return "#6b7280";
-
       default:
         return "#16a34a";
     }
   };
-    return (
+
+  return (
     <div
       style={{
         marginTop: "30px",
@@ -205,9 +192,7 @@ function TicketList({
 
             <select
               value={item.status}
-              onChange={(e) =>
-                updateStatus(index, e.target.value)
-              }
+              onChange={(e) => updateStatus(index, e.target.value)}
               style={{
                 width: "100%",
                 marginTop: "10px",
