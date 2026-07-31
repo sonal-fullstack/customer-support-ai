@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f4f7fb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dashboard */
+
+.dashboard-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: 30px auto 50px;
+}
+
+.top-section {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Bottom Layout */
+
+.bottom-section {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.left-panel {
+  flex: 1;
+}
+
+.right-panel {
+  width: 430px;
+  position: sticky;
+  top: 90px;
+}
+
+/* Mobile */
+
+@media (max-width: 992px) {
+  .bottom-section {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    width: 100%;
+    position: static;
+  }
+}
+
+/* ========================= */
+/* AI RESULT */
+/* ========================= */
+
+.ai-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #edf2f7;
+
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.ai-card h2 {
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.ai-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+
+  padding: 14px 16px;
+  margin-bottom: 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  transition: 0.3s;
+}
+
+.ai-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.08);
+}
+
+.icon {
+  font-size: 24px;
+  color: #2563eb;
+  margin-top: 3px;
+}
+
+.ai-item h4 {
+  margin: 0;
+  font-size: 17px;
+  color: #1e293b;
+}
+
+.ai-item p {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+}
+/* ===========================
+   Ticket List
+=========================== */
+
+.ticket-card {
+  transition: all 0.3s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.ticket-status {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ticket-btn {
+  transition: 0.3s;
+}
+
+.ticket-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+.ticket-select {
+  transition: 0.3s;
+}
+
+.ticket-select:focus {
+  outline: none;
+  border: 1px solid #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf2f7;
+}
