@@ -217,3 +217,58 @@ Full Stack Developer
 ---
 
 Developed as part of the Technical Assessment.
+---
+
+# Deployment
+
+## Frontend
+
+https://customer-support-ai-jldl.vercel.app/
+
+## Backend
+
+https://customer-support-ai-backend-7lrb.onrender.com/
+
+---
+
+# Testing
+
+The following functionality was manually tested:
+
+- Ticket Creation
+- Ticket Editing
+- Ticket Deletion
+- Ticket Status Update
+- Search and Filter
+- AI Analysis
+- Knowledge Base Retrieval
+- Response Approval
+- Response Rejection
+- Internal Action Approval
+- Internal Action Rejection
+- Ticket History
+- Frontend Deployment
+- Backend API Endpoints
+
+---
+
+# Known Limitations
+
+- AI responses are generated from a predefined knowledge base and do not use a live LLM.
+- User authentication is not implemented.
+- Database persistence uses a simple local data store suitable for assessment purposes.
+- No role-based access control is implemented.
+
+---
+
+# Intentionally Excluded Scope
+
+The following features were intentionally kept out to focus on the required assessment workflow:
+
+- User Authentication
+- Email Notifications
+- Real-time Collaboration
+- File Attachments
+- Production Database
+- Live LLM Integration
+- Role-based Permissions
