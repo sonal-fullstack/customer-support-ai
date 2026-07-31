@@ -17,8 +17,9 @@ function TicketList({
     try {
       const ticket = tickets[index];
 
-      const response = await axios.put(
-        `http://localhost:5000/api/tickets/${ticket.id}`,
+      const response = await axios.post(
+  `https://customer-support-ai-backend-7lrb.onrender.com/api/analyze/${ticket.id}`
+);
         {
           ...ticket,
           status,
@@ -53,7 +54,7 @@ function TicketList({
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/tickets/${tickets[index].id}`
+        `https://customer-support-ai-backend-7lrb.onrender.com/api/tickets/${tickets[index].id}`
       );
 
       const updatedTickets = allTickets.filter(

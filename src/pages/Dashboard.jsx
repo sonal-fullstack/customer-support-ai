@@ -36,8 +36,8 @@ function Dashboard() {
   const fetchTickets = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/tickets"
-      );
+  "https://customer-support-ai-backend-7lrb.onrender.com/api/tickets"
+);
 
       setTickets(response.data);
 
@@ -115,13 +115,14 @@ function Dashboard() {
           {/* Ticket List */}
 
           <div className="left-panel">
-            <TicketList
+    <TicketList
   tickets={filteredTickets}
   allTickets={tickets}
   setTickets={setTickets}
   setTicket={setTicket}
   setEditIndex={setEditIndex}
   setAnalyzedTicket={setAnalyzedTicket}
+  analyzedTicket={analyzedTicket}
 />
           </div>
 

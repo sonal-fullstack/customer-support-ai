@@ -45,7 +45,7 @@ function TicketForm({
         const currentTicket = tickets[editIndex];
 
         const response = await axios.put(
-          `http://localhost:5000/api/tickets/${currentTicket.id}`,
+          `https://customer-support-ai-backend-7lrb.onrender.com/api/tickets/${currentTicket.id}`,
           {
             ...currentTicket,
             ...ticket,
@@ -65,7 +65,7 @@ function TicketForm({
       // =============================
       else {
         const response = await axios.post(
-          "http://localhost:5000/api/tickets",
+          "https://customer-support-ai-backend-7lrb.onrender.com/api/tickets",
           {
             ...ticket,
             status: "Open",
