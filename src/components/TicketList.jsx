@@ -2,11 +2,14 @@ import axios from "axios";
 
 function TicketList({
   tickets,
+  allTickets,
   setTickets,
   setTicket,
   setEditIndex,
   setAnalyzedTicket,
+  analyzedTicket,
 }) {
+
   // ==========================
   // Update Ticket Status
   // ==========================
@@ -22,10 +25,18 @@ function TicketList({
         }
       );
 
-      const updatedTickets = [...tickets];
-      updatedTickets[index] = response.data;
+      const updatedTickets = allTickets.map((t) =>
+        t.id === ticket.id ? response.data : t
+      );
 
       setTickets(updatedTickets);
+
+      if (
+        analyzedTicket &&
+        analyzedTicket.id === ticket.id
+      ) {
+        setAnalyzedTicket(response.data);
+      }
 
       alert("✅ Status Updated");
     } catch (error) {
@@ -45,11 +56,18 @@ function TicketList({
         `http://localhost:5000/api/tickets/${tickets[index].id}`
       );
 
-      const updatedTickets = tickets.filter(
-        (_, i) => i !== index
+      const updatedTickets = allTickets.filter(
+        (t) => t.id !== tickets[index].id
       );
 
       setTickets(updatedTickets);
+
+      if (
+        analyzedTicket &&
+        analyzedTicket.id === tickets[index].id
+      ) {
+        setAnalyzedTicket(null);
+      }
 
       alert("✅ Ticket Deleted");
     } catch (error) {
@@ -124,8 +142,7 @@ function TicketList({
         return "#16a34a";
     }
   };
-
-  return (
+    return (
     <div
       style={{
         marginTop: "30px",
@@ -154,6 +171,7 @@ function TicketList({
               style={{
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
               <h3>{item.productArea}</h3>
@@ -165,6 +183,7 @@ function TicketList({
                   padding: "5px 12px",
                   borderRadius: "20px",
                   fontSize: "13px",
+                  fontWeight: "bold",
                 }}
               >
                 {item.status}
@@ -172,18 +191,15 @@ function TicketList({
             </div>
 
             <p>
-              <strong>Customer:</strong>{" "}
-              {item.customerType}
+              <strong>Customer:</strong> {item.customerType}
             </p>
 
             <p>
-              <strong>Issue:</strong>{" "}
-              {item.issueDescription}
+              <strong>Issue:</strong> {item.issueDescription}
             </p>
 
             <p>
-              <strong>Urgency:</strong>{" "}
-              {item.urgency}
+              <strong>Urgency:</strong> {item.urgency}
             </p>
 
             <select
@@ -196,13 +212,16 @@ function TicketList({
                 marginTop: "10px",
                 padding: "10px",
                 borderRadius: "6px",
+                border: "1px solid #ddd",
               }}
             >
-              <option>Open</option>
-              <option>In Review</option>
-              <option>Waiting for Customer</option>
-              <option>Resolved</option>
-              <option>Closed</option>
+              <option value="Open">Open</option>
+              <option value="In Review">In Review</option>
+              <option value="Waiting for Customer">
+                Waiting for Customer
+              </option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
             </select>
 
             <div

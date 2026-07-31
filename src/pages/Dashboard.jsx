@@ -116,12 +116,13 @@ function Dashboard() {
 
           <div className="left-panel">
             <TicketList
-              tickets={filteredTickets}
-              setTickets={setTickets}
-              setTicket={setTicket}
-              setEditIndex={setEditIndex}
-              setAnalyzedTicket={setAnalyzedTicket}
-            />
+  tickets={filteredTickets}
+  allTickets={tickets}
+  setTickets={setTickets}
+  setTicket={setTicket}
+  setEditIndex={setEditIndex}
+  setAnalyzedTicket={setAnalyzedTicket}
+/>
           </div>
 
           {/* AI Panel */}
